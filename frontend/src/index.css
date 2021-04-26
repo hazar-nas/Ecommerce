@@ -1,0 +1,26 @@
+/* custom styles */
+main {
+  min-height: 80vh; /* view point height */
+}
+
+h3 {
+  padding: 1rem 0;
+}
+
+.rating span {
+  margin: 0.1rem;
+}
+
+h1 {
+  padding: 1rem 0;
+  font-size: 1.8rem;
+}
+
+h2 {
+  padding: 0.5rem 0;
+  font-size: 1.4rem;
+}
+
+.card-text {
+  margin: 0.3rem -0.1rem;
+}
