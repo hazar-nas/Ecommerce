@@ -33,6 +33,9 @@ userSchema.methods.matchPassword = async function(enteredPassword){
 }
 
 userSchema.pre('save', async function(next){
+  if(!this.isModified('password')){
+    next() // if the user's password is the same it  would not hash itself again.
+  }
 
   const salt = await bcrypt.genSalt(10)
   this.password = await bcrypt.hash(this.password,salt)
