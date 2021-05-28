@@ -1,17 +1,25 @@
-import React, { useEffect } from 'react'
+import React, { useEffect} from 'react'
 import { Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { Link } from 'react-router-dom'
-import { getOrdersDetails } from '../actions/orderActions'
+import { getOrdersDetails} from '../actions/orderActions'
+
+
 
 const OrderScreen = ({ match }) => {
+  
+
   const orderId = match.params.id
   const dispatch = useDispatch()
 
   const orderDetails = useSelector((state) => state.orderDetails)
   const { order, loading, error } = orderDetails
+  
+  // const userLogin = useSelector((state) => state.userLogin)
+  // const { userInfo} = userLogin
+  
 
   if (!loading) {
     //calculate prices
@@ -24,9 +32,22 @@ const OrderScreen = ({ match }) => {
     )
   }
 
-  useEffect(() => {
-    dispatch(getOrdersDetails(orderId))
-  }, [order, orderId, dispatch])
+
+
+
+  useEffect(() => { // to see&uptade new orders.
+          
+    if(!order || order._id !== orderId) {
+        dispatch(getOrdersDetails(orderId))   
+    }
+     // eslint-disable-next-line
+}, [dispatch,order, orderId,]) 
+
+
+
+
+
+
 
   return loading ? (
     <Loader />
@@ -34,9 +55,9 @@ const OrderScreen = ({ match }) => {
     <Message variant='danger'>{error}</Message>
   ) : (
     <>
-      <h1>Order{order._id}</h1>
+      <h1>order</h1>
       <Row>
-        <Col md={8}>
+        <Col md={5}>
           <ListGroup variant='flush'>
             <ListGroup.Item>
               <h2>Shipping</h2>
@@ -134,6 +155,7 @@ const OrderScreen = ({ match }) => {
                   <Col>${order.taxPrice}</Col>
                 </Row>
               </ListGroup.Item>
+
               <ListGroup.Item>
                 <Row>
                   <Col>Total</Col>
@@ -142,8 +164,11 @@ const OrderScreen = ({ match }) => {
               </ListGroup.Item>
             </ListGroup>
           </Card>
+  
         </Col>
       </Row>
+      
+      
     </>
   )
 }

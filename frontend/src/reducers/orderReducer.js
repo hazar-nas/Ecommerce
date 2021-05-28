@@ -1,4 +1,6 @@
-import {ORDER_CREATE_FAIL, ORDER_CREATE_REQUEST, ORDER_CREATE_SUCCESS, ORDER_DETAILS_FAIL, ORDER_DETAILS_REQUEST, ORDER_DETAILS_SUCCESS} from '../constants/orderConstants'
+import {ORDER_CREATE_FAIL, ORDER_CREATE_REQUEST, 
+  ORDER_CREATE_SUCCESS, ORDER_DETAILS_FAIL, ORDER_DETAILS_REQUEST, 
+  ORDER_DETAILS_SUCCESS,} from '../constants/orderConstants'
 
 
 
@@ -41,3 +43,4 @@ export const orderDetailsReducer = (
         return state
     }
   }
+
