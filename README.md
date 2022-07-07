@@ -1,3 +1,3 @@
 # Ecommerce
 
-Master branch contains folders and files
+# Master branch contains folders and files
